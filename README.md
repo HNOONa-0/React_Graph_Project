@@ -11,5 +11,6 @@ There is no backend for this project, the app won't remember data you typed, so,
 It has 2 basic animations, Breadth First Search (BFS) & Depth First Search, But later down the road i plan on adding more complex algorithms such as Dijkstra's algorithm for weightened graphs, more crisp animations & ways to better control those animations (reverse, pause & play and more), i also plan on making it more mobile friendly as currently its not supported for smaller screens
 
 
-It's built with React js & Konva js, Konva is 2d canvas js library for desktop and mobile applications which also supports React, you can check the entire project out on Github repository link
-Sorry if i dont display best of React or javascript practises, im new to React & web development, this is the first project i have created, i hope it doesn't disappoint
+It's built with React js & Konva js, Konva is 2d canvas js library for desktop and mobile applications which also supports React, you can check the entire project out on this repository
+
+Sorry if i dont display best of React or javascript practises, im new to React & web development, infact this is the first project i have ever created, i hope it doesn't disappoint
