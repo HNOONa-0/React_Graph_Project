@@ -1,0 +1,4 @@
+.main-component {
+  display: flex;
+  height: calc(100% - 100px);
+}

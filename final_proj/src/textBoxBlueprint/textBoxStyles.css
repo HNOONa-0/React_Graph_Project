@@ -1,0 +1,32 @@
+.text-area-div {
+  display: flex;
+  height: 100%;
+}
+.t1 {
+  /* max-width: 50px;
+  min-width: 50px; */
+  width: 50px;
+  text-align: center;
+  font-family: monospace;
+  height: 100%;
+  font-size: 16px;
+  margin-right: 2px;
+  outline: none;
+  resize: none;
+  border: none;
+  overflow: hidden;
+  background-color: lightgray;
+}
+.t2 {
+  width: 240px;
+  /* max-width: 300px;
+  min-width: 240px; */
+  font-family: monospace;
+  height: 100%;
+  font-size: 16px;
+  white-space: pre;
+  padding: 0 1px;
+  margin: 0 -1px;
+  outline: none;
+  resize: none;
+}

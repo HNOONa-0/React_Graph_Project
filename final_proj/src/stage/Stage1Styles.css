@@ -1,0 +1,8 @@
+.stage-div {
+  border: 1px solid black;
+  width: 100%;
+  overflow: hidden;
+  margin-right: 2px;
+  /* margin-left: 2px; */
+  border-radius: 2px;
+}

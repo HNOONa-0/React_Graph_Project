@@ -1,0 +1,53 @@
+/* display flex allows navbar to display width-wise instead of height-wise, which is what we want*/
+/* we use justify content to specify spacing the contents of the navbar flexbox, it has other uses*/
+/* align items in center allows for text & liniks inside flexbox to be placed in center height-wise, this is very
+hard to do without flexbox*/
+/* min height of the flexible box is specified*/
+/* we set minimum width so we dont have akward render (text renders on top of another piece of text) */
+.nav-bar{
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+    min-height: 50px;
+    background-color: #3399ff;
+    min-width: 500px;
+}
+/* some basic styling for logo text*/
+/* letter spacing is adding "white" space between each letter, the logo appears more spread out and clean*/
+/* text transform makes text uppercased, you could manually write logo in uppercase*/
+/* should have some padding on the left */
+.logo{
+    height: 100%;
+    color: antiquewhite;
+    padding-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+/* for list of links, we again set display to flex because thats we want horizontal html */
+/* we should also add width to it for some nice spacing, why?
+because, right now, the width is not much, only enought to contain all the links, hence,
+we add a width precentage, ofcourse not afixed value since we want dynamicity */
+/*  space around so it no longer sticking to one another*/
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+/* we should also address styling of links*/
+.nav-links li{
+    list-style: none;
+}
+/* change style of anchor tags to none */
+/* add some letter spacing */
+/* make text a little bit large */
+/* add basic animation, this is done by transition keyword+hover */
+.nav-links a{
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 18px;
+    color: antiquewhite;
+    transition: color 1s;
+}
+.nav-links a:hover{
+    color:orange;
+}

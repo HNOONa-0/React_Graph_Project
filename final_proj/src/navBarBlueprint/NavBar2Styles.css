@@ -1,0 +1,68 @@
+/* the main idea is that we have height x, and we let every container inherit that height */
+/* here is wrapper div to wrap the entire navbar */
+.wrapper-nav-bar{
+    height: 50px;
+    line-height: 50px;
+    background-color: #3399ff;
+}
+/* the line height is responsible for vertically centering the content, while height is responsible for 
+height of html itself*/
+
+.nav-bar{
+    height: inherit;
+    line-height: inherit;
+
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+    /* min-width: 500px; */
+}
+
+.logo{
+    height: inherit;
+    line-height: inherit;
+
+    padding-left: 20px;
+}
+.nav-links{
+    height: inherit;
+    line-height: inherit;
+
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+/* we should also address styling of links*/
+.nav-links li{
+    list-style: none;
+}
+
+/* change style of anchor tags to none */
+/* add some letter spacing */
+/* make text a little bit large */
+/* add basic animation, this is done by transition keyword+hover */
+/* to select multiple html, we seperate names by commas */
+.logo a, .nav-links li a{
+    height: inherit;
+    line-height: inherit;
+
+    display: block;
+    text-decoration: none;
+    color: antiquewhite;
+    transition: color 1s;
+}
+.logo a{
+    
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight:bold;
+}
+.nav-links li a{
+    
+    letter-spacing: 3px;
+    font-size: 18px;
+}
+.logo a:hover, .nav-links a:hover{
+    color:orange;
+}

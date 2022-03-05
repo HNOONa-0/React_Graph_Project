@@ -1,0 +1,5 @@
+.div-1{
+    display: flex;
+    height: calc(100% - 100px);
+    /* background-color: black; */
+}
