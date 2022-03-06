@@ -23,18 +23,18 @@ const Navbar = () => {
             <a href="http://localhost:3000/About">About</a>
           </li> */}
           <li>
-            {/* <a
+            <a
               href="https://github.com/HNOONa-0/React_Graph_Project"
               target="_blank"
             >
               Github
-            </a> */}
-            <Link
-              to="https://github.com/HNOONa-0/React_Graph_Project"
-              target="_blank"
-            >
-              Guide
-            </Link>
+            </a>
+            {/* <Link
+            to="https://github.com/HNOONa-0/React_Graph_Project"
+            target="_blank"
+          >
+            Github
+          </Link> */}
           </li>
         </ul>
       </nav>
