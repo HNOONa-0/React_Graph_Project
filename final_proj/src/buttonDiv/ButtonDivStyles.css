@@ -17,7 +17,7 @@
   justify-content: space-between;
   overflow: hidden;
 }
-.button-1 {
+/* .button-1 {
   padding: 2px 4px;
   margin-bottom: 4px;
 }
@@ -35,4 +35,4 @@
 }
 .darker-button {
   filter: brightness(90%);
-}
+} */

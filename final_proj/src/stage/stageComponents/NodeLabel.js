@@ -1,7 +1,8 @@
 import Konva from "konva";
 import React, { PureComponent } from "react";
 import { Group } from "react-konva";
-import { Fill, FontSize, Radius } from "../../limits";
+// import { Fill, FontSize, Radius } from "../../limits";
+import { Fill, FontSize, Radius } from "../../myData/limits";
 import MyRect from "./MyRect";
 import MyText from "./MyText";
 

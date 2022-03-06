@@ -1,13 +1,22 @@
-import { Fill, maxNodes } from "../limits";
-import { setV2d } from "../utilityFuncs";
+// changes
+// exported as default
+// made changes to setV2d
+// import { Fill, maxNodes } from "../limits";
+import { Fill, maxNodes } from "../myData/limits";
+// import { setV2d } from "../utilityFuncs";
+import setV2d from "../myUtils/setV2d";
 
-export class Graph {
+class Graph {
   constructor() {
     // edgeStack is for chaching purposes
     // can we make adjacency list dynamic? yes!, using a set (hashmap, we can delete/insert in O(1))
-    this.graphMap = setV2d(maxNodes + 10, maxNodes + 10);
-    this.edgeStack = setV2d(maxNodes + 10, maxNodes + 10, 1, 2);
-    this.adjacencyList = setV2d(maxNodes + 10, 0, 2);
+
+    // this.graphMap = setV2d(maxNodes + 10, maxNodes + 10);
+    this.graphMap = setV2d(maxNodes + 10, maxNodes + 10, "array", "0");
+    // this.edgeStack = setV2d(maxNodes + 10, maxNodes + 10, 1, 2);
+    this.edgeStack = setV2d(maxNodes + 10, maxNodes + 10, "array", "array");
+    // this.adjacencyList = setV2d(maxNodes + 10, 0, 2);
+    this.adjacencyList = setV2d(maxNodes + 10, 0, "set");
     // console.log(this.adjacencyList);
   }
   getAdjacencyList = () => {
@@ -71,7 +80,8 @@ export class Graph {
     if (!n) return [];
 
     let paths = [];
-    let visited = setV2d(maxNodes + 10, 0, 4);
+    // let visited = setV2d(maxNodes + 10, 0, 4);
+    let visited = setV2d(maxNodes + 10, 0, "false");
 
     for (let i = 1; i < n; i++) {
       if (visited[i]) continue;
@@ -82,7 +92,8 @@ export class Graph {
   completeDFS = (n) => {
     if (!n) return [];
     let paths = [];
-    let visited = setV2d(maxNodes + 10, 0, 4);
+    // let visited = setV2d(maxNodes + 10, 0, 4);
+    let visited = setV2d(maxNodes + 10, 0, "false");
 
     for (let i = 1; i < n; i++) {
       if (visited[i]) continue;
@@ -95,7 +106,8 @@ export class Graph {
   };
   DFS = (
     path = undefined,
-    visited = setV2d(maxNodes + 10, 0, 4),
+    // visited = setV2d(maxNodes + 10, 0, 4)
+    visited = setV2d(maxNodes + 10, 0, "false"),
     from = 0,
     cur = 1
   ) => {
@@ -112,7 +124,11 @@ export class Graph {
       if (path) path.push(next);
     }
   };
-  BFS = (cur = 1, visited = setV2d(maxNodes + 10, 0, 4)) => {
+  BFS = (
+    cur = 1,
+    // visited = setV2d(maxNodes + 10, 0, 4),
+    visited = setV2d(maxNodes + 10, 0, "false")
+  ) => {
     // let nodesAtIthLevel = setV2d(maxNodes + 10, 0, 1);
     // nodesAtIthLevel[0].push(cur);
 
@@ -133,7 +149,12 @@ export class Graph {
     }
     return nodesAtIthLevel;
   };
-  isCyclic = (visited = setV2d(maxNodes + 10, 0, 4), from = 0, cur = 1) => {
+  isCyclic = (
+    // visited = setV2d(maxNodes + 10, 0, 4),
+    visited = setV2d(maxNodes + 10, 0, "false"),
+    from = 0,
+    cur = 1
+  ) => {
     // cur is curIndex, from is just the last place we came from, intially is 0
     // i think works, for asingle component ofcourse
     if (visited[cur]) return true;
@@ -179,55 +200,12 @@ export class Graph {
     // we can use a visited array of N nodes, if one of the nodes after we DFS/dfs starting from the root is unvisited
     // we dont have a single component
 
-    let visited = setV2d(maxNodes + 10, 0, 4);
+    // let visited = setV2d(maxNodes + 10, 0, 4);
+    let visited = setV2d(maxNodes + 10, 0, "false");
     this.DFS(undefined, visited);
 
     for (let i = 1; i < n; i++) if (!visited[i]) return false;
     return true;
   };
 }
-
-// animateDFSPath = async (
-//   shapesLayerRef,
-//   n,
-//   timer = (ms) => new Promise((res) => setTimeout(res, ms))
-// ) => {
-//   let path = [];
-//   this.coloredDFS(path);
-
-//   const timeToWait = 1;
-//   let pathStack = [];
-
-//   for (let i = 0; i < path.length; i++) {
-//     let isStackTop = !pathStack.length
-//       ? false
-//       : pathStack[pathStack.length - 1] === path[i]
-//       ? true
-//       : false;
-
-//     shapesLayerRef.current
-//       .findOne("." + path[i].toString() + "groupCircle")
-//       .to({
-//         fill: i === 0 ? "pink" : isStackTop ? "lime" : "orange",
-//         duration: timeToWait,
-//       });
-
-//     if (isStackTop) pathStack.pop();
-//     else pathStack.push(path[i]);
-//     await timer(timeToWait * 1000);
-//   }
-//   for (let i = 1; i < n; i++) {
-//     shapesLayerRef.current.findOne("." + i.toString() + "groupCircle").to({
-//       fill: Fill,
-//       duration: 1,
-//     });
-//   }
-//   await timer(1000);
-//   // console.log(path);
-// };
-// copyAdjacencyList = () => {
-//   let newArr = this.adjacencyList.map((eachSet) => {
-//     return { ...eachSet };
-//   });
-//   return newArr;
-// };
+export default Graph;

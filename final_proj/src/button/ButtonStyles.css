@@ -1,0 +1,19 @@
+.button-1 {
+  padding: 2px 4px;
+  margin-bottom: 4px;
+}
+.button-2 {
+  margin-bottom: 0px;
+}
+.button-3 {
+  width: 50%;
+}
+.button-4 {
+  margin-top: 2px;
+}
+.button-5 {
+  margin-bottom: 2px;
+}
+.darker-button {
+  filter: brightness(90%);
+}

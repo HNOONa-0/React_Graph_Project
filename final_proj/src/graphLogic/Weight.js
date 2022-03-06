@@ -1,10 +1,18 @@
-import { maxNodes } from "../limits";
-import { setV2d } from "../utilityFuncs";
+// exported as default
+// made changes to setV2d
+
+// import { maxNodes } from "../limits";
+import { maxNodes } from "../myData/limits";
+
+// import { setV2d } from "../utilityFuncs";
+import setV2d from "../myUtils/setV2d";
 // a < b, bettter let  m < M
-export class Weight {
+class Weight {
   constructor() {
-    this.weightMap = setV2d(maxNodes + 10, maxNodes + 10);
-    this.weightStack = setV2d(maxNodes + 10, maxNodes + 10, 1, 2);
+    // this.weightMap = setV2d(maxNodes + 10, maxNodes + 10);
+    this.weightMap = setV2d(maxNodes + 10, maxNodes + 10, "array", "0");
+    // this.weightStack = setV2d(maxNodes + 10, maxNodes + 10, 1, 2);
+    this.weightStack = setV2d(maxNodes + 10, maxNodes + 10, "array", "array");
   }
   getWeightMap = () => {
     return this.weightMap;
@@ -46,3 +54,4 @@ export class Weight {
     // does nothing
   };
 }
+export default Weight;

@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Line } from "react-konva";
-import { Radius } from "../../limits";
+// import { Radius } from "../../limits";
+import { Radius } from "../../myData/limits";
 import Node from "./Node";
 
 let lineKey = 0;

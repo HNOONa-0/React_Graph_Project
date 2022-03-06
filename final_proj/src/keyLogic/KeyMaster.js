@@ -1,11 +1,19 @@
-import { maxNodes } from "../limits";
-import { setV2d } from "../utilityFuncs";
+// exported as default
+// made changes to setV2d
 
-export class KeyMaster {
+// import { maxNodes } from "../limits";
+import { maxNodes } from "../myData/limits";
+// import { setV2d } from "../utilityFuncs";
+import setV2d from "../myUtils/setV2d";
+
+class KeyMaster {
   constructor() {
-    this.keyToIndex = setV2d(maxNodes + 10, 0, 4);
-    this.indexToKey = setV2d(maxNodes + 10, 0, 4);
-    this.indexToLabel = setV2d(maxNodes + 10, 0);
+    // this.keyToIndex = setV2d(maxNodes + 10, 0, 4);
+    this.keyToIndex = setV2d(maxNodes + 10, 0, "0");
+    // this.indexToKey = setV2d(maxNodes + 10, 0, 4);
+    this.indexToKey = setV2d(maxNodes + 10, 0, "0");
+    // this.indexToLabel = setV2d(maxNodes + 10, 0);
+    this.indexToLabel = setV2d(maxNodes + 10, 0, "array");
     this.labelToIndex = new Map();
 
     this.cursor = 1;
@@ -85,3 +93,4 @@ export class KeyMaster {
     return this.cursor > maxNodes;
   };
 }
+export default KeyMaster;

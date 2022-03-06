@@ -1,33 +1,26 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "./App.css";
-// import { Div1 } from "./container/Div1";
-// import { TextBox } from "./textBoxBlueprint/TextBox";
-// import { TextBox1 } from "./textBoxBlueprint/textBox1";
-// import {NavBar2} from './navBarBlueprint/NavBar2'
-// import { NavBar3 } from "./navBarBlueprint/NavBar3";
-// import { TextBox1 } from './textBoxBlueprint/textBox1';
-import { NavBar } from "./navBarBlueprint/NavBar";
-import { MainComponent } from "./container/MainComponent";
-import { minWindowHeight, minWindowWidth } from "./limits";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Guide from "./Guide";
-import About from "./About";
-// import handWrittenDemos from "./handWrittenDemos.txt";
-// let savedText = "";
+// import { NavBar } from "./navBarBlueprint/NavBar";
+import Navbar from "./navbar/Navbar";
+// import Guide from "./Guide";
+import Guide from "./pages/Guide";
+// new, MainComponent is inside Home
+import Home from "./pages/Home";
+// import About from "./pages/About";
+// import About from "./About";
+// import { MainComponent } from "./container/MainComponent";
+// import { minWindowHeight, minWindowWidth } from "./limits";
+import { minWindowHeight, minWindowWidth } from "./myData/limits";
+import "./App.css";
 
 function App() {
-  // fetch("handWrittenDemos.txt")
-  //   .then((response) => {
-  //     return response.text();
-  //   })
-  //   .then((text) => {
-  //     console.log(text);
-  //   });
-
+  // dimensions of body div
   const [bodyDimension, setBodyDimension] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  // observe root div with resize observer
+  // we could use resize event but this works well
   const [resizeObserver, setResizeObserver] = useState(
     new ResizeObserver((entries) => {
       const width = entries[0].target.offsetWidth;
@@ -35,14 +28,13 @@ function App() {
       setBodyDimension({ width, height });
     })
   );
+
   const [savedText, updateSavedText] = useState("");
-  // const updateSavedText = (s) => {
-  //   savedText = s;
-  // };
   useEffect(() => {
     resizeObserver.observe(document.getElementById("root"));
     return () => {
-      console.log("disconnected");
+      // do we ever see this message?
+      console.log("App disconnected");
       resizeObserver.disconnect();
     };
   }, []);
@@ -51,7 +43,7 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <NavBar></NavBar>
+        <Navbar></Navbar>
         <Routes>
           <Route path="/Guide" element={<Guide />}></Route>
           <Route
@@ -64,10 +56,10 @@ function App() {
                   this App needs more space to run{" "}
                 </h1>
               ) : (
-                <MainComponent
-                  updateSavedText={updateSavedText}
+                <Home
                   savedText={savedText}
-                />
+                  updateSavedText={updateSavedText}
+                ></Home>
               )
             }
           ></Route>
@@ -79,16 +71,3 @@ function App() {
 }
 
 export default App;
-// <NavBar1></NavBar1>
-// <div>hello</div>
-// <NavBar2></NavBar2>
-// <React.Fragment>
-//   <NavBar3></NavBar3>
-//   {/* <TextBox1></TextBox1> */}
-//   <Div1></Div1>
-// </React.Fragment>
-// <TextBox></TextBox>
-{
-  /* <NavBar></NavBar>
-      <TextBox></TextBox> */
-}

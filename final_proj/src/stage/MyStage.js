@@ -1,18 +1,21 @@
+// changes
+// css file now same name as js file
 import Konva from "konva";
 import React, { Component } from "react";
 import { Layer, Stage } from "react-konva";
-import "./Stage1Styles.css";
 
 import NodeLabel from "./stageComponents/NodeLabel";
 import Node from "./stageComponents/Node";
 import ConnectionLine from "./stageComponents/ConnectionLine";
 import ConnectionArrow from "./stageComponents/ConnectionArrow";
-import { Fill, Radius } from "../limits";
+// import { Fill, Radius } from "../limits";
+import { Fill, Radius } from "../myData/limits";
 import Weight from "./stageComponents/Weight";
+import "./MyStageStyles.css";
 
 let stageKey = 0;
 
-export class MyStage extends Component {
+class MyStage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -782,64 +785,4 @@ export class MyStage extends Component {
     );
   }
 }
-// treeNodes = (mp, X, Y) => {
-//   let nodes = this.state.nodes;
-//   let scale = this.state.scale;
-
-//   // Radius was causing bugs
-//   // the total padding sould be state padding + Radius bec node pos
-//   // that we calculate is node center not top-left corner of group
-
-//   const padding = this.state.padding + Radius;
-//   const width = this.props.width - 2 - 2 * padding * scale;
-//   const height = this.props.height - 2 - 2 * padding * scale;
-
-//   const unitWidth = width / (!X ? 1 : X);
-//   const unitHeight = height / (!Y ? 1 : Y);
-
-//   nodes = nodes.map((eachNode) => {
-//     if (!eachNode) return null;
-
-//     let xOnStage = mp.get(eachNode.groupProps.key).x;
-//     let yOnStage = mp.get(eachNode.groupProps.key).y;
-//     // let newAbsPos = {
-//     //   x: (padding - Radius) * scale + (!X ? 0.5 : xOnStage) * unitWidth,
-//     //   y: (padding - Radius) * scale + (!Y ? 0.5 : yOnStage) * unitHeight,
-//     // };
-//     // console.log({ key: eachNode.groupProps.key, newAbsPos });
-//     const { x, y } = this.fromAbsToRelative({
-//       x: (padding - Radius) * scale + (!X ? 0.5 : xOnStage) * unitWidth,
-//       y: (padding - Radius) * scale + (!Y ? 0.5 : yOnStage) * unitHeight,
-//     });
-//     return {
-//       ...eachNode,
-//       groupProps: { ...eachNode.groupProps, x, y },
-//     };
-//   });
-//   return nodes;
-// };
-// const { isDirectedMain } = this.props.bools.isDirectedMain;
-// const graphInfo = this.props.graphInfo;
-// console.log(graphInfo.asTree());
-
-// if (!graphInfo.canITree(isDirectedMain)) {
-//   let i = 0;
-//   alert(
-//     // \n1. you may expect cycles
-//     "constraints:\n" +
-//       ++i +
-//       ". Single component\n" +
-//       ++i +
-//       '. Each node must be "reachable" from root node (first generated node)'
-//   );
-//   return;
-// }
-// // if (graphInfo.isCyclic()) {
-// //   alert(
-// //     // \n1. you may expect cycles
-// //     "you may expect a weird tree with cyclic graphs"
-// //   );
-// // }
-
-// const { mp, X, Y } = TreeNode1.TreeNodeData(graphInfo.getAdjacencyList());
-// let nodes = this.treeNodes(mp, X, Y);
+export default MyStage;

@@ -1,6 +1,7 @@
 import { Component } from "react";
-import { Button } from "../button/Button";
+import Button from "../button/Button";
 import "./ButtonDivStyles.css";
+
 const buttonTextData = [
   "Reset scale",
   "Scatter",
@@ -12,7 +13,7 @@ const buttonTextData = [
   "Directed",
   "Download as PNG",
 ];
-export class ButtonDiv extends Component {
+class ButtonDiv extends Component {
   constructor(props) {
     super(props);
   }
@@ -143,3 +144,4 @@ export class ButtonDiv extends Component {
     );
   }
 }
+export default ButtonDiv;

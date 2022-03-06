@@ -1,8 +1,10 @@
 import React, { PureComponent } from "react";
 import { Group } from "react-konva";
-import { Fill, FontSize, FontType, Radius } from "../../limits";
+// import { Fill, FontSize, FontType, Radius } from "../../limits";
+import { Fill, FontSize, FontType, Radius } from "../../myData/limits";
 import MyCircle from "./MyCircle";
 import MyText from "./MyText";
+
 class Node extends PureComponent {
   static addNode(pos, name, key, c = 0, shapesLayerRef) {
     return {

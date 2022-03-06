@@ -1,11 +1,17 @@
-import { Graph } from "../graphLogic/Graph";
-import { TreeNode1 } from "../graphLogic/TreeNode1";
-import { Weight } from "../graphLogic/Weight";
-import { KeyMaster } from "../keyLogic/KeyMaster";
-import { maxNodes } from "../limits";
-import { setV2d } from "../utilityFuncs";
+// changes
+// exported as default
+// made changes to setV2d
+import Graph from "../graphLogic/Graph";
+import TreeNode from "../graphLogic/TreeNode";
+import Weight from "../graphLogic/Weight";
+import KeyMaster from "../keyLogic/KeyMaster";
 
-export class GraphInfo {
+// import { maxNodes } from "../limits";
+import { maxNodes } from "../myData/limits";
+// import { setV2d } from "../utilityFuncs";
+import setV2d from "../myUtils/setV2d";
+
+class GraphInfo {
   constructor() {
     this.graph = new Graph();
     this.keyMaster = new KeyMaster();
@@ -21,7 +27,7 @@ export class GraphInfo {
   };
   getTreeRoots = () => {
     if (!this.treeRoots)
-      this.treeRoots = TreeNode1.completeBuildTree(
+      this.treeRoots = TreeNode.completeBuildTree(
         this.getNumOfNodes(),
         this.getAdjacencyList()
       );
@@ -30,35 +36,40 @@ export class GraphInfo {
   getTreeRootsData = () => {
     const treeRoots = this.getTreeRoots();
     if (!this.treeRootsData)
-      this.treeRootsData = TreeNode1.validateData(
-        TreeNode1.completeTreeNodeData(treeRoots)
+      this.treeRootsData = TreeNode.validateData(
+        TreeNode.completeTreeNodeData(treeRoots)
       );
     return this.treeRootsData;
   };
   completeTreeRootsDFS = (roots = this.getTreeRoots()) => {
     if (!roots.length) return [];
 
-    let visited = setV2d(maxNodes + 10, 0, 4);
+    // let visited = setV2d(maxNodes + 10, 0, 4);
+    // let visited = setV2d(maxNodes + 10, 0, "false");
     let paths = [];
     // console.log(roots);
     for (const root of roots) {
       let path = [];
       // this.treeRootsDFS(rootpath);
-      this.treeRootDFS(root, path, visited);
+      // this.treeRootDFS(root, path, visited);
+      this.treeRootDFS(root, path);
       paths.push(path);
     }
     return paths;
   };
-  treeRootDFS = (root, path, visited) => {
-    if (!root || !path || !visited) throw "treeRootDfs needs arguments";
-    if (visited[root.idx]) throw "treeRootDfs visited a node before";
+  // treeRootDFS = (root, path, visited) => {
+  treeRootDFS = (root, path) => {
+    // if (!root || !path || !visited) throw "treeRootDfs needs arguments";
+    if (!root || !path) throw "treeRootDfs needs arguments";
+    // if (visited[root.idx]) throw "treeRootDfs visited a node before";
 
     const idx = root.idx;
-    visited[idx] = true;
+    // visited[idx] = true;
     path.push(idx);
 
     for (const next of root.children) {
-      this.treeRootDFS(next, path, visited);
+      // this.treeRootDFS(next, path, visited);
+      this.treeRootDFS(next, path);
       path.push(next.idx);
     }
   };
@@ -66,6 +77,7 @@ export class GraphInfo {
     if (!treeRootsData.length) return [];
 
     // let visited = setV2d(maxNodes + 10, 0, 4);
+    // let visited = setV2d(maxNodes + 10, 0, "false");
     let paths = [];
     for (const data of treeRootsData) {
       const { mp, X, Y } = data;
@@ -76,8 +88,8 @@ export class GraphInfo {
   treeRootBFS = (mp, Y) => {
     // easy, we have y level of roots & Y of every tree
     // if (!root || !visited) throw "treeRootBFS needs arguments";
-
-    let nodesAtLevelI = setV2d(Y + 1, 0);
+    // setV2d(Y + 1, 0);
+    let nodesAtLevelI = setV2d(Y + 1, 0, "array");
     for (const [key, val] of mp) {
       nodesAtLevelI[val.y].push(key);
     }
@@ -105,42 +117,5 @@ export class GraphInfo {
 
     return path;
   };
-  // tree any graph, this is useless function
-  // canITree = (isDirectedMain) => {
-  //   const n = this.getNumOfNodes();
-  //   // let a = !isDirectedMain ? true : this.graph.isSingleParent(n);
-  //   let b = this.graph.isSingleComponent(n);
-  //   // let c = !this.graph.isCyclic();
-  //   // console.log({ b, c });
-  //   // console.log({a,b,c})
-  //   // return a && b && c;
-  //   // return a && b;
-  //   // return b && c;
-  //   return b;
-  // };
-  // asTree = () => {
-  //   const adjacencyList = this.getAdjacencyList();
-  //   const n = this.getNumOfNodes();
-  //   let roots = [];
-  //   let visited = setV2d(maxNodes + 10, 0, 4);
-
-  //   for (let i = 1; i < n; i++) {
-  //     if (visited[i]) continue;
-  //     const newRoot = TreeNode1.buildTree(adjacencyList, i, visited);
-  //     const data = TreeNode1.TreeNodeData(adjacencyList, newRoot);
-  //     roots.push(data);
-
-  //     let minX = 0;
-  //     for (const [key, val] of data.mp) minX = Math.min(minX, val.x);
-  //     if (minX < 0) {
-  //       for (const [key, val] of data.mp) val.x += -minX;
-  //       data.X += -minX;
-  //     }
-  //     // console.log(minX);
-  //     // console.log(roots[roots.length - 1]);
-  //     // if !X, X = 1
-  //     // if (!roots[roots.length - 1].X) roots[roots.length - 1].X = 1;
-  //   }
-  //   return roots;
-  // };
 }
+export default GraphInfo;
