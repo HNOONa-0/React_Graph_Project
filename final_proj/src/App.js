@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 // import { NavBar } from "./navBarBlueprint/NavBar";
 import Navbar from "./navbar/Navbar";
 // import Guide from "./Guide";
