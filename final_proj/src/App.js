@@ -41,7 +41,7 @@ function App() {
 
   const { width, height } = bodyDimension;
   return (
-    <Router>
+    <Router basename={url}>
       <Fragment>
         <Navbar></Navbar>
         <Routes>
