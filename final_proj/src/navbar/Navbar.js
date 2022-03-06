@@ -2,7 +2,7 @@ import React from "react";
 import "./NavbarStyles.css";
 // changes
 // name change to Navbar from NavBar
-let url = "https://hnoona-0.github.io/React_Graph_Project/";
+const url = "https://hnoona-0.github.io/React_Graph_Project/";
 const Navbar = () => {
   return (
     <div className="wrapper-nav-bar">

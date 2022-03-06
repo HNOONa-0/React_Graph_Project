@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 // import { minWindowHeight, minWindowWidth } from "./limits";
 import { minWindowHeight, minWindowWidth } from "./myData/limits";
 import "./App.css";
-
+const url = "https://hnoona-0.github.io/React_Graph_Project/";
 function App() {
   // dimensions of body div
   const [bodyDimension, setBodyDimension] = useState({
