@@ -41,11 +41,13 @@ function App() {
 
   const { width, height } = bodyDimension;
   return (
-    <Router basename={url}>
+    <Router
+    // basename={url}
+    >
       <Fragment>
         <Navbar></Navbar>
         <Routes>
-          <Route path="/Guide" element={<Guide />}></Route>
+          <Route exact path="/Guide" element={<Guide />}></Route>
           <Route
             exact
             path="/"
@@ -63,7 +65,7 @@ function App() {
               )
             }
           ></Route>
-          {/* <Route path="/About" element={<About />}></Route> */}
+          {/* <Route exact path="/About" element={<About />}></Route> */}
         </Routes>
       </Fragment>
     </Router>
